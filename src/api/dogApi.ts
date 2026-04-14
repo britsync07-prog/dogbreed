@@ -211,7 +211,8 @@ export function getBreedInfo(breed: string): BreedInfo {
     },
   };
 
-  return breedData[breed.toLowerCase()] || breedData.default;
+  const data = breedData[breed.toLowerCase()] || breedData.default;
+  return { ...data, name: breed };
 }
 
 /**
