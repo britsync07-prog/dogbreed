@@ -40,6 +40,9 @@ export interface BreedInfo {
     lifespan: string;
     exercise: string;
     grooming: string;
+    energyLevel?: string;
+    trainability?: string;
+    goodWithChildren?: string;
   };
 }
 
@@ -58,7 +61,7 @@ export interface SEOProps {
 }
 
 export interface JsonLdProps {
-  type: 'breed' | 'faq' | 'itemList' | 'website';
+  type: 'breed' | 'faq' | 'itemList' | 'website' | 'breadcrumb';
   data: Record<string, unknown>;
 }
 

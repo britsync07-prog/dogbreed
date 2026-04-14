@@ -239,7 +239,6 @@ export default function BreedDetail() {
                   <p className="text-sm font-semibold text-slate-700">{breedInfo.characteristics.exercise}</p>
                 </div>
               </div>
-              {/* @ts-ignore - New AI SEO Fields */}
               {breedInfo.characteristics.energyLevel && (
                 <div className="flex items-start gap-3 p-4 bg-white/50 backdrop-blur-sm border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                   <Sparkles className="h-5 w-5 text-blue-600 mt-0.5" />
@@ -249,7 +248,6 @@ export default function BreedDetail() {
                   </div>
                 </div>
               )}
-              {/* @ts-ignore */}
               {breedInfo.characteristics.trainability && (
                 <div className="flex items-start gap-3 p-4 bg-white/50 backdrop-blur-sm border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                   <Star className="h-5 w-5 text-blue-600 mt-0.5" />
@@ -304,6 +302,14 @@ export default function BreedDetail() {
             <Link to="/breeds">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Browse All Breeds
+            </Link>
+          </Button>
+        </div>
+      </div>
+    </>
+  );
+}
+ Browse All Breeds
             </Link>
           </Button>
         </div>
