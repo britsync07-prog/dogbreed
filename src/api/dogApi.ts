@@ -7,7 +7,8 @@ import type {
   BreedsListResponse, 
   RandomImageResponse, 
   BreedImagesResponse,
-  Breed 
+  Breed,
+  BreedInfo
 } from '@/types';
 
 const BASE_URL = 'https://dog.ceo/api';
@@ -120,26 +121,8 @@ export function generateAltText(breedName: string, index?: number): string {
 /**
  * Get breed info (mock data since API doesn't provide this)
  */
-export function getBreedInfo(breed: string): {
-  description: string;
-  temperament: string[];
-  characteristics: {
-    size: string;
-    lifespan: string;
-    exercise: string;
-    grooming: string;
-  };
-} {
-  const breedData: Record<string, {
-    description: string;
-    temperament: string[];
-    characteristics: {
-      size: string;
-      lifespan: string;
-      exercise: string;
-      grooming: string;
-    };
-  }> = {
+export function getBreedInfo(breed: string): BreedInfo {
+  const breedData: Record<string, Omit<BreedInfo, 'name'>> = {
     default: {
       description: `The ${formatBreedName(breed)} is a versatile and beloved canine companion. Highly regarded for its adaptable nature and distinct characteristics, this breed serves as an ideal choice for families seeking a loyal partner.`,
       temperament: ['Friendly', 'Loyal', 'Intelligent', 'Adaptable'],

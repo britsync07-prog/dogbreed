@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Heart, Share2, Calendar, Ruler, Activity, Scissors } from 'lucide-react';
+import { ArrowLeft, Heart, Share2, Calendar, Ruler, Activity, Scissors, Sparkles, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -302,14 +302,6 @@ export default function BreedDetail() {
             <Link to="/breeds">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Browse All Breeds
-            </Link>
-          </Button>
-        </div>
-      </div>
-    </>
-  );
-}
- Browse All Breeds
             </Link>
           </Button>
         </div>
