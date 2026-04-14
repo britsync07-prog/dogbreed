@@ -4,8 +4,9 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Search, Star } from 'lucide-react';
+import { ArrowRight, Search, Star, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { SEO } from '@/components/seo/SEO';
 import { JsonLd, generateWebsiteSchema, generateItemListSchema } from '@/components/seo/JsonLd';
 import { SearchBar } from '@/components/ui-custom/SearchBar';
@@ -88,7 +89,7 @@ export default function Home() {
   const itemListSchema = generateItemListSchema(
     featuredBreeds.map(b => ({
       name: b.displayName,
-      url: `https://dogbreedexplorer.pages.dev/breed/${b.slug}`,
+      url: `https://dogsbreed.pages.dev/breed/${b.slug}`,
       image: b.imageUrl,
     }))
   );
@@ -106,57 +107,70 @@ export default function Home() {
       <SEO 
         title="Dog Breed Explorer | Discover Your Perfect Canine Companion"
         description="Explore hundreds of dog breeds with detailed information, photos, and characteristics. Find the perfect dog breed for your lifestyle with our comprehensive guide."
-        canonical="https://dogbreedexplorer.pages.dev/"
+        canonical="https://dogsbreed.pages.dev/"
       />
       <JsonLd type="website" data={websiteSchema} />
       <JsonLd type="itemList" data={itemListSchema} />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-slate-900">
+      <section className="relative overflow-hidden bg-slate-950">
+        {/* Animated Background Blobs */}
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-4000"></div>
+
         <div className="absolute inset-0">
           <img
             src={heroImage}
             alt="Beautiful dog showcasing various breeds"
-            className="h-full w-full object-cover opacity-40"
+            className="h-full w-full object-cover opacity-30"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-slate-900/40" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-900/60 to-slate-950/90" />
         </div>
 
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="max-w-2xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Discover Your Perfect{' '}
-              <span className="text-blue-400">Canine Companion</span>
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-36 flex flex-col justify-center min-h-[80vh]">
+          <div className="max-w-3xl mx-auto text-center animate-fade-in-up">
+            <Badge variant="outline" className="mb-6 border-blue-500/30 text-blue-300 bg-blue-500/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-medium tracking-wide">
+              <Sparkles className="w-4 h-4 mr-2 inline-block text-blue-400" />
+              Over 100+ Breeds to Discover
+            </Badge>
+
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight drop-shadow-lg">
+              Discover Your Perfect <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">Canine Companion</span>
             </h1>
             
-            <p className="mt-6 text-lg sm:text-xl text-slate-200">
-              Explore hundreds of dog breeds with detailed information, photos, 
+            <p className="mt-8 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-light">
+              Explore hundreds of dog breeds with detailed information, high-quality photos, 
               and characteristics. Find the perfect match for your lifestyle.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <div className="flex-1 max-w-md">
+            <div className="mt-10 max-w-2xl mx-auto p-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl flex flex-col sm:flex-row gap-3">
+              <div className="flex-1">
                 <SearchBar 
                   onSearch={handleSearch}
-                  placeholder="Search dog breeds..."
+                  placeholder="Search by breed name..."
                 />
               </div>
-              <Button asChild size="lg" className="gap-2">
+              <Button asChild size="lg" className="h-12 px-8 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white border-0 shadow-lg shadow-blue-900/50 rounded-xl transition-all duration-300 hover:scale-105">
                 <Link to="/breeds">
-                  <Search className="h-5 w-5" />
-                  Browse All Breeds
+                  <Search className="h-5 w-5 mr-2" />
+                  Browse
                 </Link>
               </Button>
             </div>
 
-            <div className="mt-8 flex items-center gap-6 text-sm text-slate-300">
-              <div className="flex items-center gap-2">
-                <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-                <span>{breeds.length}+ Breeds</span>
+            <div className="mt-10 flex flex-wrap justify-center items-center gap-6 text-sm text-slate-400 font-medium">
+              <div className="flex items-center gap-2 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+                <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+                <span>Verified Data</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Search className="h-5 w-5 text-blue-400" />
-                <span>Easy Search</span>
+              <div className="flex items-center gap-2 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+                <Search className="h-4 w-4 text-blue-400" />
+                <span>Smart Filters</span>
               </div>
             </div>
           </div>

@@ -8,7 +8,7 @@ import type { SEOProps } from '@/types';
 const DEFAULT_TITLE = 'Dog Breed Explorer | Discover Your Perfect Canine Companion';
 const DEFAULT_DESCRIPTION = 'Explore hundreds of dog breeds with detailed information, photos, and characteristics. Find the perfect dog breed for your lifestyle with our comprehensive guide.';
 const DEFAULT_KEYWORDS = 'dog breeds, dog breed guide, dog photos, canine breeds, pet dogs, dog information, breed characteristics';
-const SITE_URL = 'https://dogbreedexplorer.pages.dev';
+const SITE_URL = 'https://dogsbreed.pages.dev';
 const DEFAULT_OG_IMAGE = '/og-image.jpg';
 
 export function SEO({

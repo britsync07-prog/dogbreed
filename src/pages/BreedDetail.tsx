@@ -128,13 +128,14 @@ export default function BreedDetail() {
   const breedSchema = generateBreedSchema(
     breed.displayName,
     images[0] || '',
-    breedInfo.description
+    breedInfo.description,
+    breedInfo.characteristics
   );
   const faqSchema = generateFAQSchema(faqs);
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', url: 'https://dogbreedexplorer.pages.dev/' },
-    { name: 'All Breeds', url: 'https://dogbreedexplorer.pages.dev/breeds' },
-    { name: breed.displayName, url: `https://dogbreedexplorer.pages.dev/breed/${breed.slug}` },
+    { name: 'Home', url: 'https://dogsbreed.pages.dev/' },
+    { name: 'All Breeds', url: 'https://dogsbreed.pages.dev/breeds' },
+    { name: breed.displayName, url: `https://dogsbreed.pages.dev/breed/${breed.slug}` },
   ]);
 
   return (
@@ -142,13 +143,13 @@ export default function BreedDetail() {
       <SEO 
         title={`${breed.displayName} | Dog Breed Information & Photos | Dog Breed Explorer`}
         description={breedInfo.description}
-        canonical={`https://dogbreedexplorer.pages.dev/breed/${breed.slug}`}
+        canonical={`https://dogsbreed.pages.dev/breed/${breed.slug}`}
         ogImage={images[0]}
         keywords={`${breed.displayName}, ${breed.name} dog, dog breed, ${breed.displayName} temperament, ${breed.displayName} care`}
       />
       <JsonLd type="breed" data={breedSchema} />
       <JsonLd type="faq" data={faqSchema} />
-      <JsonLd type="breed" data={breadcrumbSchema} />
+      <JsonLd type="breadcrumb" data={breadcrumbSchema} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
@@ -176,6 +177,9 @@ export default function BreedDetail() {
               src={images[0] || '/placeholder-dog.jpg'}
               alt={generateAltText(breed.displayName)}
               className="h-full w-full object-cover"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
           </div>
 
@@ -212,34 +216,54 @@ export default function BreedDetail() {
               </Button>
             </div>
 
-            {/* Quick Stats */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="flex items-start gap-3 p-4 bg-slate-50 rounded-lg">
+            {/* Quick Stats Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <div className="flex items-start gap-3 p-4 bg-white/50 backdrop-blur-sm border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                 <Ruler className="h-5 w-5 text-blue-600 mt-0.5" />
                 <div>
-                  <p className="font-medium text-slate-900">Size</p>
-                  <p className="text-sm text-slate-600">{breedInfo.characteristics.size}</p>
+                  <p className="font-bold text-[10px] text-blue-600 uppercase tracking-widest">Size</p>
+                  <p className="text-sm font-semibold text-slate-700">{breedInfo.characteristics.size}</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 p-4 bg-slate-50 rounded-lg">
+              <div className="flex items-start gap-3 p-4 bg-white/50 backdrop-blur-sm border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                 <Calendar className="h-5 w-5 text-blue-600 mt-0.5" />
                 <div>
-                  <p className="font-medium text-slate-900">Lifespan</p>
-                  <p className="text-sm text-slate-600">{breedInfo.characteristics.lifespan}</p>
+                  <p className="font-bold text-[10px] text-blue-600 uppercase tracking-widest">Lifespan</p>
+                  <p className="text-sm font-semibold text-slate-700">{breedInfo.characteristics.lifespan}</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 p-4 bg-slate-50 rounded-lg">
+              <div className="flex items-start gap-3 p-4 bg-white/50 backdrop-blur-sm border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                 <Activity className="h-5 w-5 text-blue-600 mt-0.5" />
                 <div>
-                  <p className="font-medium text-slate-900">Exercise</p>
-                  <p className="text-sm text-slate-600">{breedInfo.characteristics.exercise}</p>
+                  <p className="font-bold text-[10px] text-blue-600 uppercase tracking-widest">Exercise</p>
+                  <p className="text-sm font-semibold text-slate-700">{breedInfo.characteristics.exercise}</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 p-4 bg-slate-50 rounded-lg">
+              {/* @ts-ignore - New AI SEO Fields */}
+              {breedInfo.characteristics.energyLevel && (
+                <div className="flex items-start gap-3 p-4 bg-white/50 backdrop-blur-sm border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                  <Sparkles className="h-5 w-5 text-blue-600 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-[10px] text-blue-600 uppercase tracking-widest">Energy</p>
+                    <p className="text-sm font-semibold text-slate-700">{breedInfo.characteristics.energyLevel}</p>
+                  </div>
+                </div>
+              )}
+              {/* @ts-ignore */}
+              {breedInfo.characteristics.trainability && (
+                <div className="flex items-start gap-3 p-4 bg-white/50 backdrop-blur-sm border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                  <Star className="h-5 w-5 text-blue-600 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-[10px] text-blue-600 uppercase tracking-widest">Training</p>
+                    <p className="text-sm font-semibold text-slate-700">{breedInfo.characteristics.trainability}</p>
+                  </div>
+                </div>
+              )}
+              <div className="flex items-start gap-3 p-4 bg-white/50 backdrop-blur-sm border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                 <Scissors className="h-5 w-5 text-blue-600 mt-0.5" />
                 <div>
-                  <p className="font-medium text-slate-900">Grooming</p>
-                  <p className="text-sm text-slate-600">{breedInfo.characteristics.grooming}</p>
+                  <p className="font-bold text-[10px] text-blue-600 uppercase tracking-widest">Grooming</p>
+                  <p className="text-sm font-semibold text-slate-700">{breedInfo.characteristics.grooming}</p>
                 </div>
               </div>
             </div>

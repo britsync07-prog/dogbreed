@@ -141,23 +141,29 @@ export function getBreedInfo(breed: string): {
     };
   }> = {
     default: {
-      description: `The ${formatBreedName(breed)} is a wonderful companion dog known for its loyalty and friendly nature. This breed makes an excellent family pet and adapts well to various living situations.`,
-      temperament: ['Friendly', 'Loyal', 'Intelligent', 'Affectionate'],
+      description: `The ${formatBreedName(breed)} is a versatile and beloved canine companion. Highly regarded for its adaptable nature and distinct characteristics, this breed serves as an ideal choice for families seeking a loyal partner.`,
+      temperament: ['Friendly', 'Loyal', 'Intelligent', 'Adaptable'],
       characteristics: {
-        size: 'Medium to Large',
-        lifespan: '10-14 years',
+        size: 'Medium (30-60 lbs)',
+        lifespan: '10-15 years',
         exercise: 'Moderate',
-        grooming: 'Regular brushing',
+        grooming: 'Weekly brushing',
+        energyLevel: 'High',
+        trainability: 'Excellent',
+        goodWithChildren: 'Yes'
       },
     },
     'german-shepherd': {
-      description: 'The German Shepherd is a highly intelligent and versatile working dog. Known for their loyalty, courage, and guarding instincts, they excel in police work, search and rescue, and as family companions.',
+      description: 'The German Shepherd Dog is a leading police, guard, and military dog—and a loving family companion. Renowned for its courage, intelligence, and unwavering loyalty.',
       temperament: ['Confident', 'Courageous', 'Intelligent', 'Loyal', 'Protective'],
       characteristics: {
         size: 'Large (50-90 lbs)',
         lifespan: '9-13 years',
-        exercise: 'High - needs daily exercise',
-        grooming: 'Regular brushing, seasonal shedding',
+        exercise: 'High - needs mental and physical stimulation',
+        grooming: 'Daily brushing during shedding seasons',
+        energyLevel: 'Very High',
+        trainability: 'Excellent (Top 3 most intelligent)',
+        goodWithChildren: 'Yes, with proper socialization'
       },
     },
     'golden-retriever': {

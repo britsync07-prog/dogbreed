@@ -117,8 +117,8 @@ export default function BreedList() {
 
   // Generate breadcrumb schema
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', url: 'https://dogbreedexplorer.pages.dev/' },
-    { name: 'All Breeds', url: 'https://dogbreedexplorer.pages.dev/breeds' },
+    { name: 'Home', url: 'https://dogsbreed.pages.dev/' },
+    { name: 'All Breeds', url: 'https://dogsbreed.pages.dev/breeds' },
   ]);
 
   if (isLoading) {
@@ -140,9 +140,9 @@ export default function BreedList() {
           ? `Search results for "${searchQuery}" - Find detailed information, photos, and characteristics of dog breeds.`
           : 'Browse our complete collection of dog breeds. Find detailed information, photos, and characteristics for hundreds of breeds.'
         }
-        canonical="https://dogbreedexplorer.pages.dev/breeds"
+        canonical="https://dogsbreed.pages.dev/breeds"
       />
-      <JsonLd type="breed" data={breadcrumbSchema} />
+      <JsonLd type="breadcrumb" data={breadcrumbSchema} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}

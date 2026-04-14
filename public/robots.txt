@@ -1,11 +1,11 @@
 # robots.txt for Dog Breed Explorer
-# https://dogbreedexplorer.pages.dev
+# https://dogsbreed.pages.dev
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://dogbreedexplorer.pages.dev/sitemap.xml
+Sitemap: https://dogsbreed.pages.dev/sitemap.xml
 
 # Crawl rate
 Crawl-delay: 1

@@ -5,8 +5,8 @@
 /*    /index.html   200
 
 # Canonical redirects (www to non-www)
-https://www.dogbreedexplorer.pages.dev/* https://dogbreedexplorer.pages.dev/:splat 301
+https://www.dogsbreed.pages.dev/* https://dogsbreed.pages.dev/:splat 301
 
 # HTTP to HTTPS
-http://dogbreedexplorer.pages.dev/* https://dogbreedexplorer.pages.dev/:splat 301
-http://www.dogbreedexplorer.pages.dev/* https://dogbreedexplorer.pages.dev/:splat 301
+http://dogsbreed.pages.dev/* https://dogsbreed.pages.dev/:splat 301
+http://www.dogsbreed.pages.dev/* https://dogsbreed.pages.dev/:splat 301

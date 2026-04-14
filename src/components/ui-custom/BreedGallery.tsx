@@ -28,6 +28,7 @@ export function BreedGallery({ images, breedName }: BreedGalleryProps) {
                   src={image}
                   alt={generateAltText(breedName, index)}
                   loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   srcSet={`${image} 300w, ${image} 600w`}
                   sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"

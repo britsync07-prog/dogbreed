@@ -5,7 +5,7 @@
 import { useEffect } from 'react';
 import type { JsonLdProps } from '@/types';
 
-const SITE_URL = 'https://dogbreedexplorer.pages.dev';
+const SITE_URL = 'https://dogsbreed.pages.dev';
 
 export function JsonLd({ type, data }: JsonLdProps) {
   useEffect(() => {
@@ -53,7 +53,7 @@ export function generateWebsiteSchema() {
 /**
  * Generate Breed schema (Dog breed type)
  */
-export function generateBreedSchema(breed: string, imageUrl: string, description: string) {
+export function generateBreedSchema(breed: string, imageUrl: string, description: string, characteristics?: any) {
   return {
     '@context': 'https://schema.org',
     '@type': ['Thing', 'DogBreed'],
@@ -61,6 +61,11 @@ export function generateBreedSchema(breed: string, imageUrl: string, description
     description,
     image: imageUrl,
     url: `${SITE_URL}/breed/${breed.toLowerCase().replace(/\s+/g, '-')}`,
+    additionalProperty: characteristics ? Object.entries(characteristics).map(([key, value]) => ({
+      '@type': 'PropertyValue',
+      name: key,
+      value: value
+    })) : [],
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `${SITE_URL}/breed/${breed.toLowerCase().replace(/\s+/g, '-')}`,

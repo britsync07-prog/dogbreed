@@ -15,8 +15,8 @@ export default function Favorites() {
 
   // Generate breadcrumb schema
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', url: 'https://dogbreedexplorer.pages.dev/' },
-    { name: 'Favorites', url: 'https://dogbreedexplorer.pages.dev/favorites' },
+    { name: 'Home', url: 'https://dogsbreed.pages.dev/' },
+    { name: 'Favorites', url: 'https://dogsbreed.pages.dev/favorites' },
   ]);
 
   if (!isLoaded) {
@@ -32,9 +32,9 @@ export default function Favorites() {
       <SEO 
         title="My Favorite Dog Breeds | Dog Breed Explorer"
         description="View and manage your favorite dog breeds. Save breeds you love and compare them easily."
-        canonical="https://dogbreedexplorer.pages.dev/favorites"
+        canonical="https://dogsbreed.pages.dev/favorites"
       />
-      <JsonLd type="breed" data={breadcrumbSchema} />
+      <JsonLd type="breadcrumb" data={breadcrumbSchema} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}

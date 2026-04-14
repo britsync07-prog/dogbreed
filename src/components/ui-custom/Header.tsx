@@ -30,34 +30,39 @@ export function Header({ favoritesCount = 0 }: HeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <header className="sticky top-0 z-50 w-full glass">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex items-center gap-2 text-xl font-bold text-slate-900 hover:text-slate-700 transition-colors"
+            className="flex items-center gap-3 text-2xl font-black text-slate-900 hover:scale-105 transition-transform duration-300"
           >
-            <Dog className="h-8 w-8 text-blue-600" />
-            <span className="hidden sm:inline">Dog Breed Explorer</span>
-            <span className="sm:hidden">Dog Breeds</span>
+            <div className="bg-blue-600 p-2 rounded-xl shadow-lg shadow-blue-200">
+              <Dog className="h-6 w-6 text-white" />
+            </div>
+            <span className="hidden sm:inline tracking-tight">Dog Breed <span className="text-blue-600">Explorer</span></span>
+            <span className="sm:hidden">DogBreeds</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-blue-600 ${
+                className={`text-sm font-bold tracking-wide transition-all duration-300 hover:text-blue-600 relative py-2 group ${
                   isActive(link.path) 
                     ? 'text-blue-600' 
                     : 'text-slate-600'
                 }`}
               >
                 {link.name}
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transition-transform duration-300 ${
+                  isActive(link.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                }`} />
                 {link.path === '/favorites' && favoritesCount > 0 && (
-                  <span className="ml-1.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-blue-100 text-xs font-semibold text-blue-600">
+                  <span className="ml-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white shadow-md shadow-blue-200">
                     {favoritesCount}
                   </span>
                 )}

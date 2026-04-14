@@ -3,8 +3,11 @@
 
 # Security headers for all routes
 /*
+  # Strict Transport Security
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  
   # Content Security Policy
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https://images.dog.ceo data: blob:; connect-src 'self' https://dog.ceo; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https://images.dog.ceo https://dog.ceo data: blob:; connect-src 'self' https://dog.ceo; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';
   
   # XSS Protection
   X-XSS-Protection: 1; mode=block
